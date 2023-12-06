@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Popup from "../components/Popup.vue"
+import Popup from "./Popup.vue"
 
 export default {
   name: "AppContainer",
