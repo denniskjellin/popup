@@ -6,18 +6,18 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
   plugins: [vue()],
   build: {
-    manifest: true, // Generates a manifest file
-    outDir: 'dist', // Specify the output directory
-    assetsDir: 'assets', // Specify the assets directory
-    cssCodeSplit: true, // Enable CSS code splitting
+    manifest: true,
+    outDir: 'dist',
+    assetsDir: 'assets',
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
-        entryFileNames: '[name].js', // Customize the entry file names
-        chunkFileNames: '[name].js', // Customize the chunk file names
-        assetFileNames: 'assets/[name].[ext]', // Customize the name of the emitted files
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
+        assetFileNames: 'assets/[name].[ext]',
       },
     },
-    assetFileNames: 'assets/[name].[ext]', // Customize the name of the emitted files
+    assetFileNames: 'assets/[name].[ext]',
   },
   resolve: {
     alias: {
