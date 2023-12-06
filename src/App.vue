@@ -1,85 +1,62 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div id="app">
+    <button @click="openPopup" class="open-button">Open Popup</button>
+    <Popup v-if="isPopupVisible" :jsonData="popupData" @close="closePopup" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script>
+import Popup from "./components/Popup.vue";
+
+export default {
+  name: "App",
+  components: {
+    Popup,
+  },
+  data() {
+    return {
+      isPopupVisible: false,
+      popupData: {
+        title: "Dynamisk rubrik..",
+        description: "Lorem ipsum dolor sit amet consectetur adipiscing elit congue felis, hendrerit praesent at accumsan tempor phasellus lectus urna malesuada suscipit, quam cras nulla ligula vel eget ac netus. Curae donec metus tincidunt orci, sociis porttitor himenaeos dictumst id, posuere rutrum ornare.",
+        linkTitle: "Länk titel",
+        link: "/about"
+      },
+    };
+  },
+  methods: {
+    openPopup() {
+      this.isPopupVisible = true;
+    },
+    closePopup() {
+      console.log("closePopup, emit");
+      this.isPopupVisible = false;
+    },
+  },
+};
+</script>
+
+<style>
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.open-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  outline: none;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.open-button:hover {
+  background-color: #2980b9;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>
