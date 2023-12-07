@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // base: '/wp-genteknik/web/app/plugins/',
+  base: '/wp-genteknik/web/app/plugins/popup/',
   plugins: [vue()],
   build: {
     manifest: true,
@@ -13,12 +13,10 @@ export default defineConfig({
     cssCodeSplit: true,
     rollupOptions: {
       output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
-        assetFileNames: 'assets/[name].[ext]',
+        entryFileNames: 'index.js', 
+        assetFileNames: 'assets/main.css',
       },
     },
-    assetFileNames: 'assets/[name].[ext]',
   },
   resolve: {
     alias: {
