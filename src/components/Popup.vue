@@ -122,7 +122,7 @@ export default {
   padding: 8px 16px;
   margin-top: 10px;
   text-decoration: none;
-  background-color: #3498db;
+  background-color: #0276a8 ;
   color: #fff;
   border-radius: 4px;
   transition: background-color 0.3s;
