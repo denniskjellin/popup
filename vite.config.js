@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/path-to-wp-page/web/app/plugins/',
   plugins: [vue()],
   build: {
     manifest: true,
