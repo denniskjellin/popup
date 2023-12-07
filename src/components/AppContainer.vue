@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="openPopup" class="open-button">Open Popup</button>
+    <!-- <button @click="openPopup" class="open-button">Open Popup</button> -->
     <Popup v-if="isPopupVisible" :jsonData="popupData" @close="closePopup" />
   </div>
 </template>
@@ -18,18 +18,22 @@ export default {
       isPopupVisible: false,
       popupData: {
         title: "Dynamisk rubrik..",
-        description: "Lorem ipsum dolor sit amet consectetur adipiscing elit congue felis, hendrerit praesent at accumsan tempor phasellus lectus urna malesuada suscipit, quam cras nulla ligula vel eget ac netus. Curae donec metus tincidunt orci, sociis porttitor himenaeos dictumst id, posuere rutrum ornare.",
-        linkTitle: "Länk titel",
-        link: "/about"
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies aliquam, nunc sapien ultricies nunc, quis ultricies nisl nunc eget nunc.",
+        linkTitle: "Gå till nyhetsbrevet",
+        link: "https://www.google.se"
       },
     };
   },
+   mounted() {
+     setTimeout(() => {
+       this.isPopupVisible = true;
+     }, 1000);
+   },
   methods: {
     openPopup() {
       this.isPopupVisible = true;
     },
     closePopup() {
-      console.log("closePopup, emit");
       this.isPopupVisible = false;
     },
   },
@@ -42,6 +46,8 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  color: #000;
+  font-family: Roboto, sans-serif, Arial, Helvetica;
 }
 
 .open-button {
