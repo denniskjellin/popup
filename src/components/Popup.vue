@@ -19,46 +19,44 @@ export default {
   props: {
     jsonData: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   mounted() {
-    window.addEventListener('keydown', this.handleKeyboardNavigation);
-    this.$refs['popup-title'].focus();
-    this.$refs['popup-title'].tabIndex = -1;
+    window.addEventListener('keydown', this.handleKeyboardNavigation)
+    this.$refs['popup-title'].focus()
+    this.$refs['popup-title'].tabIndex = -1
   },
   beforeUnmount() {
-    window.removeEventListener('keydown', this.handleKeyboardNavigation);
+    window.removeEventListener('keydown', this.handleKeyboardNavigation)
   },
   methods: {
     closePopup() {
-      this.$emit("close");
+      this.$emit('close')
     },
     handleKeyboardNavigation(e) {
       // Tracking 'tab' and 'shift + tab' to keep focus within the tour,
       // since it otherwise tabs to content behind the popup
       if (e.key === 'Tab') {
-        const focusable = document
-          .querySelector('.generic-popup')
-          .querySelectorAll('button,a');
+        const focusable = document.querySelector('.generic-popup').querySelectorAll('button,a')
         if (focusable.length) {
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          const shift = e.shiftKey;
+          const first = focusable[0]
+          const last = focusable[focusable.length - 1]
+          const shift = e.shiftKey
           if (shift) {
             if (e.target === first) {
-              last.focus();
-              e.preventDefault();
+              last.focus()
+              e.preventDefault()
             }
           } else if (e.target === last) {
-            first.focus();
-            e.preventDefault();
+            first.focus()
+            e.preventDefault()
           }
         }
       }
-    },
+    }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -72,7 +70,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 .popup-overlay {
   position: fixed;
@@ -122,7 +119,7 @@ export default {
   padding: 8px 16px;
   margin-top: 10px;
   text-decoration: none;
-  background-color: #0276a8 ;
+  background-color: #0276a8;
   color: #fff;
   border-radius: 4px;
   transition: background-color 0.3s;
